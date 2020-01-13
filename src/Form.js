@@ -2,35 +2,44 @@ import React from "react";
 
 class Form extends React.Component {
   state = {
-    username: "",
-    password: ""
+    userName: "",
+    Password: ""
   };
 
   change = e => {
     this.props.onChange({ [e.target.name]: e.target.value });
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   };
 
   onSubmit = e => {
     e.preventDefault();
-    this.setState({ username: "", password: "" });
-    this.props.onChange({ username: "", password: "" });
+    // this.props.onSubmit(this.state);
+    this.setState({
+      userName: "",
+      Password: ""
+    });
+    this.props.onChange({
+      userName: "",
+      Password: ""
+    });
   };
 
   render() {
     return (
       <form>
         <input
-          name="username"
-          placeholder="Enter your username"
-          value={this.state.username}
+          name="userName"
+          placeholder="User name"
+          value={this.state.userName}
           onChange={e => this.change(e)}
         />
         <br />
         <input
-          name="password"
-          placeholder="Enter your password"
-          value={this.state.password}
+          name="Password"
+          placeholder="Password"
+          value={this.state.Password}
           onChange={e => this.change(e)}
         />
         <br />
@@ -39,4 +48,5 @@ class Form extends React.Component {
     );
   }
 }
+
 export default Form;
